@@ -31,25 +31,39 @@ extern FILE *fin; /* we read from this file */
 	if ( (result = fread( (char*)buf, sizeof(char), max_size, fin)) < 0) \
 		YY_FATAL_ERROR( "read() in flex scanner failed");
 
+
+/* DECLARATIONS
+ * ======================================================================== */
+
 char string_buf[MAX_STR_CONST]; /* to assemble string constants */
 char *string_buf_ptr;
-
 extern int curr_lineno;
 extern int verbose_flag;
-
 extern YYSTYPE cool_yylval;
 
 /*
  *  Add Your own definitions here
  */
+int comment_depth;
+int string_length = 0;
 
+void addToStr(char* str);
 %}
+
+/* DEFINITIONS
+ * ======================================================================== */
+
 
 /*
  * Define names for regular expressions here.
  */
 
 DARROW          =>
+NUMBER          [0-9]
+ALPHANUMERIC    [a-zA-Z0-9_]
+
+%x COMMENT
+%x STRING
 
 %%
 
@@ -62,11 +76,124 @@ DARROW          =>
   *  The multiple-character operators.
   */
 {DARROW}		{ return (DARROW); }
+[ \t] 
+
+"(*"            {   comment_depth++;
+                    // printf("comment depth: %d\n", comment_depth);
+                    BEGIN(COMMENT); 
+                }
+<COMMENT>"(*"   {   comment_depth++;
+                    // printf("comment depth: %d\n", comment_depth);
+                }
+<COMMENT>\n     { curr_lineno++; }
+<COMMENT>.      {}
+<COMMENT>"*)"   {   comment_depth--;
+                    // printf("comment shallowness: %d\n", comment_depth);
+                    if (comment_depth == 0) {
+                        BEGIN(INITIAL);
+                    } 
+                }
+"--".*\n        { curr_lineno++; }  /* discard line */
+"--".*<EOF>     { curr_lineno++; }  /* discard line */
+"--".*          { curr_lineno++; }  /* discard line */
+
+"\""            { 
+                    BEGIN(STRING);
+                    // printf("str: %s\n", string_buf);
+                    // printf("strlen: %d\n", string_length);
+                }
+<STRING>"\""    { 
+                    // printf("endstr: %s\n", string_buf);
+                    // printf("strlen: %d\n", string_length);
+                    cool_yylval.symbol = stringtable.add_string(string_buf);
+                    string_buf[0] = '\0';
+                    string_length = 0;
+                    BEGIN(INITIAL);
+                    return(STR_CONST);
+                }
+<STRING>\n      {   
+                    BEGIN(INITIAL);
+                    cool_yylval.symbol = stringtable.add_string(string_buf);
+                    string_buf[0] = '\0';
+                    string_length = 0;
+                    string_length++;
+                    // printf("str: %s\n", string_buf);
+                }
+<STRING>.       {   
+                    addToStr(yytext);
+                    string_length++;
+                    // printf("str: %s\n", string_buf);
+                }
+
+
+<STRING>.       {   
+                    addToStr(yytext);
+                    string_length++;
+                    // printf("str: %s\n", string_buf);
+                }
+
+
+"/"             { return '/'; }
+"+"             { return '+'; }
+"-"             { return '-'; }
+"*"             { return '*'; }
+"("             { return '('; }
+")"             { return ')'; }
+"="             { return '='; }
+"<"             { return '<'; }
+"."             { return '.'; }
+"~"             { return '~'; }
+","             { return ','; }
+";"             { return ';'; }
+":"             { return ':'; }
+"@"             { return '@'; }
+"{"             { return '{'; }
+"}"             { return '}'; }
 
  /*
   * Keywords are case-insensitive except for the values true and false,
   * which must begin with a lower-case letter.
   */
+(?i:class)      { return(CLASS); }
+(?i:else)       { return(ELSE); }
+(?i:fi)         { return(FI); }
+(?i:if)         { return(IF); }
+(?i:in)         { return(IN); }
+(?i:inherits)   { return(INHERITS); }
+(?i:let)        { return(LET); }
+(?i:loop)       { return(LOOP); }
+(?i:pool)       { return(POOL); }
+(?i:then)       { return(THEN); }
+(?i:while)      { return(WHILE); }
+(?i:case)       { return(CASE); }
+(?i:esac)       { return(ESAC); }
+(?i:of)         { return(OF); }
+(?i:new)        { return(NEW); }
+(?i:isvoid)     { return(ISVOID); }
+(?i:not)        { return(NOT); }
+
+t(?i:rue)   {
+                cool_yylval.boolean = true;
+                return(BOOL_CONST);
+            }
+f(?i:alse)  { 
+                cool_yylval.boolean = false;
+                return(BOOL_CONST);
+            }
+{NUMBER}+      {
+                cool_yylval.symbol = inttable.add_string(yytext);
+                return (INT_CONST);
+            }
+
+[A-Z]{ALPHANUMERIC}* {
+                cool_yylval.symbol = idtable.add_string(yytext);
+                return(TYPEID);
+            }
+
+[a-z]{ALPHANUMERIC}* {
+                cool_yylval.symbol = idtable.add_string(yytext);
+                return(OBJECTID);
+            }
 
 
  /*
@@ -76,5 +203,19 @@ DARROW          =>
   *
   */
 
+"_"         { 
+              cool_yylval.error_msg = yytext;
+              return(ERROR);
+            }
+
+\n          { curr_lineno++; }
 
 %%
+
+/* USER SUBROUTINES
+ * ======================================================================== */
+
+void addToStr(char* str) {
+    strcat(string_buf, str);
+}
+
