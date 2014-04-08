@@ -1,0 +1,1 @@
+java -cp /usr/class/cs143/cool/lib/java-cup-11a.jar  java_cup.Main $*
