@@ -26,7 +26,7 @@ FILE *token_file = stdin;		// we read from this file
 extern Classes parse_results;	 // list of classes; used for multiple files 
 extern Program ast_root;	 // the AST produced by the parse
 
-int curr_lineno;               // needed for lexical analyzer
+//int curr_lineno;               // needed for lexical analyzer
 char *curr_filename = "<stdin>";
 
 extern int omerrs;             // a count of lex and parse errors
