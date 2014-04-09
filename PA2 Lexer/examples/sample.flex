@@ -8,9 +8,9 @@ run witih
 ./a.out < input
 
 */
+
 %{
 int num_lines = 0;
-
 #define LAMBDA 1
 #define DOT    2
 #define PLUS   3
@@ -20,7 +20,11 @@ int num_lines = 0;
 #define	ID     7
 #define INVALID	8
 %}
+
+
 %x COMMENT
+
+
 %%
 \n	{ num_lines++; }
 "+"	{ return(PLUS); }
