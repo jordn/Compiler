@@ -1,0 +1,1785 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"num",
+				"num_aliens"
+			],
+			[
+				"world",
+				"world_map_small"
+			],
+			[
+				"in",
+				"inputfile"
+			],
+			[
+				"prin",
+				"print"
+			],
+			[
+				"ci",
+				"city_and_roads"
+			],
+			[
+				"city",
+				"city_and_roads"
+			],
+			[
+				"output",
+				"outputfile"
+			],
+			[
+				"curre",
+				"current_city"
+			],
+			[
+				"print",
+				"printCities"
+			],
+			[
+				"op",
+				"opposite_direction"
+			],
+			[
+				"direction",
+				"direction_index"
+			],
+			[
+				"dire",
+				"direction_index"
+			],
+			[
+				"neigh",
+				"neighbouring_city"
+			],
+			[
+				"di",
+				"direction"
+			],
+			[
+				"alien",
+				"alien_list"
+			],
+			[
+				"citi",
+				"city_list"
+			],
+			[
+				"cit",
+				"city_and_directions"
+			],
+			[
+				"dis",
+				"distance_between_elements"
+			],
+			[
+				"pr",
+				"prev_right"
+			],
+			[
+				"pre",
+				"prev_left"
+			],
+			[
+				"fla",
+				"flags_remaining"
+			],
+			[
+				"ma",
+				"max_flags"
+			],
+			[
+				"mid",
+				"middle"
+			],
+			[
+				"ne",
+				"next_val"
+			],
+			[
+				"mi",
+				"midd_val"
+			],
+			[
+				"midd",
+				"midd_val"
+			],
+			[
+				"A",
+				"A"
+			],
+			[
+				"min",
+				"minima"
+			],
+			[
+				"prev",
+				"prev_val"
+			],
+			[
+				"max_",
+				"max_chunks"
+			],
+			[
+				"treatmen",
+				"treatment_details"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"li",
+				"light-blue"
+			],
+			[
+				"ligh",
+				"light-blue"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"HTTP",
+				"HttpResponse"
+			],
+			[
+				"template",
+				"template_name"
+			],
+			[
+				"panel",
+				"panel-color"
+			],
+			[
+				"r",
+				"require"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"register",
+				"register-modal"
+			],
+			[
+				"preve",
+				"preventDefault"
+			],
+			[
+				"Question",
+				"QuestionListView"
+			],
+			[
+				"Tem",
+				"TemplateResponse"
+			],
+			[
+				"templat",
+				"template_name"
+			],
+			[
+				"Pa",
+				"PageDetailView"
+			],
+			[
+				"te",
+				"text-transform"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"sor",
+				"sortReviews"
+			],
+			[
+				"impl",
+				"implants_number"
+			],
+			[
+				"upda",
+				"updatePrices"
+			],
+			[
+				"cli",
+				"click	click"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"implan",
+				"implants_number"
+			],
+			[
+				"nu",
+				"number_implants"
+			],
+			[
+				"current",
+				"currentTarget"
+			],
+			[
+				"addres",
+				"address_components"
+			],
+			[
+				"geo",
+				"geocodeAddress"
+			],
+			[
+				"ge",
+				"geocodeTimer"
+			],
+			[
+				"long",
+				"longitude"
+			],
+			[
+				"requ",
+				"request"
+			],
+			[
+				"ip",
+				"ip_location"
+			],
+			[
+				"loca",
+				"locality"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"dark",
+				"dark-blue"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"bg",
+				"bg-grey"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"blue",
+				"elective-blue"
+			],
+			[
+				"dar",
+				"dark-blue"
+			],
+			[
+				"Blo",
+				"Blogpost"
+			],
+			[
+				"B",
+				"BlogPostDetailView"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"imp",
+				"important"
+			],
+			[
+				"l",
+				"line-height"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"cu",
+				"current_site"
+			],
+			[
+				"parse",
+				"parsed_date"
+			],
+			[
+				"re",
+				"review_text"
+			],
+			[
+				"review_",
+				"review_text"
+			],
+			[
+				"over",
+				"overall_rating"
+			],
+			[
+				"revi",
+				"review_date"
+			],
+			[
+				"review",
+				"review_text"
+			],
+			[
+				"cusom",
+				"customer_location"
+			],
+			[
+				"customer_",
+				"customer_name"
+			],
+			[
+				"rev",
+				"reviewList"
+			],
+			[
+				"number",
+				"number_reviews"
+			],
+			[
+				"REvi",
+				"ReviewCreateView"
+			],
+			[
+				"RE",
+				"ReviewAdmin"
+			],
+			[
+				"Review",
+				"ReviewManager"
+			],
+			[
+				"Clin",
+				"ClinicImageForm"
+			],
+			[
+				"spac",
+				"spaced"
+			],
+			[
+				"con",
+				"context	get_context_data"
+			],
+			[
+				"Admin",
+				"AdminImageWidget"
+			],
+			[
+				"Mo",
+				"ModelAdmin"
+			],
+			[
+				"Pri",
+				"PriceList"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"clini",
+				"clinic"
+			],
+			[
+				"address",
+				"address_line_1"
+			],
+			[
+				"on",
+				"onload"
+			],
+			[
+				"lo",
+				"load	load"
+			],
+			[
+				"STATI",
+				"STATIC_URL"
+			],
+			[
+				"cqc",
+				"cqc_result"
+			],
+			[
+				"For",
+				"ForeignKey"
+			],
+			[
+				"Time",
+				"TimeStampedModel"
+			],
+			[
+				"Tim",
+				"TimeStampedModel"
+			],
+			[
+				"STAT",
+				"STATICFILES_STORAGE"
+			],
+			[
+				"ema",
+				"email_parsed"
+			],
+			[
+				"next",
+				"next_parsed"
+			],
+			[
+				"login",
+				"login_url"
+			],
+			[
+				"Firs",
+				"first_name"
+			],
+			[
+				"password",
+				"password_reset_confirm"
+			],
+			[
+				"post",
+				"password_reset"
+			],
+			[
+				"PAs",
+				"PasswordResetForm"
+			],
+			[
+				"conte",
+				"context	get_context_data"
+			],
+			[
+				"get",
+				"get_email_parts"
+			],
+			[
+				"acce",
+				"access-smile"
+			],
+			[
+				"local",
+				"local_clinic"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"style",
+				"font-style"
+			],
+			[
+				"quot",
+				"quotation"
+			],
+			[
+				"quotation",
+				"quotation_contact"
+			],
+			[
+				"treat",
+				"treatment_details"
+			],
+			[
+				"trea",
+				"treatment_details"
+			],
+			[
+				"tre",
+				"treatment"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\n",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"c",
+				"Set Syntax: C++"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"set pt",
+				"Set Syntax: Python"
+			],
+			[
+				"s",
+				"Snippet: comment"
+			],
+			[
+				"com",
+				"Snippet: comment"
+			],
+			[
+				"comm",
+				"Snippet: comment"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"comme",
+				"Snippet: comment"
+			],
+			[
+				"html",
+				"HTMLPrettify: Set Prettify Preferences"
+			],
+			[
+				"h",
+				"HTMLPrettify"
+			],
+			[
+				"pret",
+				"HTMLPrettify: Set Plugin Options"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"sn",
+				"Snippet: comment"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"snipcomm",
+				"Snippet: comment"
+			],
+			[
+				"livere",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live",
+				"LiveReload: Self test"
+			],
+			[
+				"set html",
+				"Set Syntax: HTML"
+			],
+			[
+				"commen",
+				"Snippet: comment"
+			],
+			[
+				"disabl",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"dis",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"disable",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"enable",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"shell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Prem",
+				"Package Control: Remove Package"
+			],
+			[
+				"je",
+				"Snippet: jQuery(document).ready"
+			],
+			[
+				"sublime",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"remvo",
+				"Package Control: Remove Package"
+			],
+			[
+				"sublimlinter",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"insl",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 458.0
+	},
+	"console":
+	{
+		"height": 126.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jordanburgess/Dropbox/Notes/Hacker School.md",
+		"/Users/jordanburgess/Dropbox/Notes/Grand Challenge Ideas.md",
+		"/Users/jordanburgess/static/css",
+		"/Users/jordanburgess/Projects/listmanager/client/listmanager.html",
+		"/Users/jordanburgess/Projects/listmanager/client/listmanager.js",
+		"/Users/jordanburgess/Projects/listmanager/smart.lock",
+		"/Users/jordanburgess/Projects/listmanager/smart.json",
+		"/Users/jordanburgess/Projects/listmanager/listmanager.html",
+		"/Users/jordanburgess/Projects/listmanager/listmanager.js",
+		"/Users/jordanburgess/Projects/thread-aliens/invasion.py",
+		"/Users/jordanburgess/Dropbox/Notes/twilio.md",
+		"/Users/jordanburgess/Projects/thread-aliens/import random.py",
+		"/Users/jordanburgess/Projects/thread-aliens/world_map_tiny.txt",
+		"/Users/jordanburgess/Projects/codility/distance.py",
+		"/Users/jordanburgess/Projects/codility/prefixsuffix.py",
+		"/Users/jordanburgess/Projects/codility/equi.py",
+		"/Users/jordanburgess/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/jordanburgess/Projects/codility/missing.py",
+		"/Users/jordanburgess/Projects/popcorn-app/README.md",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/clinics/clinic_search.html",
+		"/Users/jordanburgess/Projects/medicaltourism/medicaltourism.sublime-project",
+		"/Users/jordanburgess/Projects/medicaltourism/requirements/production.txt",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_staff_list.html",
+		"/Users/jordanburgess/Projects/medicaltourism/static/scss/consultations/site.scss",
+		"/Users/jordanburgess/Projects/medicaltourism/users/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/base/templatetags/base_extras.py",
+		"/Users/jordanburgess/Projects/medicaltourism/base/templatetags/base.py",
+		"/Users/jordanburgess/Projects/medicaltourism/consultations/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/consultations/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/static/scss/base/foundation/_settings.scss",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/tasks.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_detail.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_contact_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/base/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/users/sms_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/clinics/clinic_list.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/base.html",
+		"/Users/jordanburgess/Projects/medicaltourism/medicaltourism/settings/base.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/hipmunk.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_signup_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/flatpages/quote_with_search.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/page_with_search.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/clinics/provider_detail.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/clinics/clinic_detail.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/_simple.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/ask/question_list.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/ask/question_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/static/scss/base/_variables.scss",
+		"/Users/jordanburgess/Projects/medicaltourism/cms/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/ask/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/ask/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/flatpages/list-clinic.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/home.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/users/quotation_signup_email_subject.txt",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/promo.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/registration/password_reset_email.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/users/quotation_signup_email.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/thanks.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/quotation_request_team_email.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/ask/question_team_email.html",
+		"/Users/jordanburgess/Projects/medicaltourism/base/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/appointments/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/base/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/medicaltourism/urls.py",
+		"/Users/jordanburgess/.virtualenvs/medicaltourism/bin/postactivate",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/users/login.html",
+		"/Users/jordanburgess/Projects/medicaltourism/users/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/guide_page.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/blog_page.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/blog_index_page.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/text_page.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/cms/guide_index_page.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/email_base-dev.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/_nav_account.html",
+		"/Users/jordanburgess/Projects/medicaltourism/blog/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/lesspress.py",
+		"/Users/jordanburgess/Projects/medicaltourism/manage.py",
+		"/Users/jordanburgess/Projects/medicaltourism/blog/admin.py",
+		"/Users/jordanburgess/Projects/medicaltourism/blog/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/cms/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/cms/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/cms/admin.py",
+		"/Users/jordanburgess/Projects/medicaltourism/blog/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/wagtail-submodule/wagtail/wagtailadmin/templates/wagtailadmin/pages/_editor_js.html",
+		"/Users/jordanburgess/Projects/medicaltourism/bin/install_nodejs.sh",
+		"/Users/jordanburgess/Projects/medicaltourism/medicaltourism/settings/local.py",
+		"/Users/jordanburgess/Projects/medicaltourism/npm_requirements.txt",
+		"/Users/jordanburgess/Projects/medicaltourism/.buildpacks",
+		"/Users/jordanburgess/Projects/medicaltourism/ask/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/.git/MERGE_MSG",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/users/profile_overview.html",
+		"/Users/jordanburgess/Projects/medicaltourism/consultations/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/reviews/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/users/views.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/clinics/appointment_book_form.html",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/appointments/forms.py",
+		"/Users/jordanburgess/Projects/medicaltourism/README.md",
+		"/Users/jordanburgess/Projects/medicaltourism/redirect/__init_.py",
+		"/Users/jordanburgess/Projects/medicaltourism/redirect/domain_redirect.py",
+		"/Users/jordanburgess/Projects/medicaltourism/redirect/__init__.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/dental-implants/what-are-dental-implants.md",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/dental-implants/index.html",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/blog/topic_overview.html",
+		"/Users/jordanburgess/Projects/medicaltourism/base/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/ask/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/appointments/admin.py",
+		"/Users/jordanburgess/Projects/medicaltourism/ask/admin.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/blog/blogpost_list.html",
+		"/Users/jordanburgess/Projects/medicaltourism/asl/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/static/scss/clinics/clinics.scss",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/consultations/offer.html",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/reviews/managers.py",
+		"/Users/jordanburgess/Projects/medicaltourism/static/js/base/vendor/jquery.tinysort.min.js",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/admin.py",
+		"/Users/jordanburgess/Projects/medicaltourism/consultations/urls.py",
+		"/Users/jordanburgess/Projects/medicaltourism/appointments/models.py",
+		"/Users/jordanburgess/Projects/medicaltourism/base/tasks.py",
+		"/Users/jordanburgess/Projects/medicaltourism/templates/base/500.html",
+		"/Users/jordanburgess/Projects/medicaltourism/consultations/__init__.py",
+		"/Users/jordanburgess/Projects/medicaltourism/static/scss/consultations/_search.scss",
+		"/Users/jordanburgess/Projects/medicaltourism/.gitignore",
+		"/Users/jordanburgess/Projects/medicaltourism/clinics/migrations/0024_auto__add_field_zipcode_latlong.py",
+		"/Users/jordanburgess/Projects/medicaltourism/static/resources/GeoLite2-City.mmdb"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"Overdentures",
+			"",
+			"*.scss",
+			"",
+			"css/consultations/table.css",
+			"",
+			"-.meteor",
+			"",
+			"/Users/jordanburgess/Projects/memrise/memrise/accounts/templates/accounts/email",
+			"/Users/jordanburgess/Projects/memrise/memrise/accounts/templates/accounts/emailsafe",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"server",
+			"Meteor.rend",
+			"yield",
+			"self",
+			"inputfile",
+			"dest",
+			"destr",
+			"cities",
+			"destroy_city",
+			"destory_city",
+			"removing",
+			"stuck",
+			"pop",
+			"city_and_directions",
+			",",
+			"n",
+			"random",
+			"equi",
+			"A",
+			"a",
+			"A",
+			"-",
+			",",
+			"index",
+			"fix",
+			",",
+			"solution",
+			"meteor.ren",
+			"render",
+			"preser",
+			"fdate",
+			"login",
+			"email address has ",
+			"phon",
+			"active",
+			"width",
+			"ask a de",
+			",",
+			"quotation",
+			"self.cleaned_data",
+			"paylo",
+			"import req",
+			"requests",
+			"request",
+			"vital-",
+			"vital",
+			"h3",
+			"Mouth Restoration",
+			"mouth res",
+			"hero blue",
+			"blue",
+			"\"blue",
+			"simple-header",
+			"sim",
+			"<div class=\"row\">\n  <div class=\"columns simple-header\">",
+			"simple-header",
+			"main-padding",
+			"quotation_con",
+			"Dentafly",
+			"dentafly",
+			"price",
+			"dentafly",
+			"GuidePage",
+			"orderable",
+			"redirects",
+			"twilio",
+			"cleaned_da",
+			"get_email",
+			"send",
+			"\"",
+			"import http",
+			"twilio",
+			"middle",
+			"form_valid",
+			"payload",
+			"import request",
+			"request.",
+			"from request",
+			"request",
+			"valid",
+			"<form",
+			"domain",
+			"email",
+			"confirm",
+			"thumb",
+			"flatpage",
+			"}}",
+			".coffee",
+			"compress",
+			"base",
+			"less",
+			"LinkFields",
+			"guidepage",
+			"blogpost",
+			"blog.",
+			"related_link",
+			"cms",
+			"admin",
+			"wagtail",
+			"form",
+			"csrftoken",
+			"UserSignupView",
+			"modal",
+			"TimeStampedModel",
+			"e",
+			"sendbutton",
+			"contactform",
+			"jQuery",
+			"select",
+			"input",
+			"parsl",
+			"medium",
+			"phone",
+			"redirect",
+			"http",
+			"url",
+			"GuideView",
+			"topic",
+			"nodes",
+			"authenticatoin_form",
+			"authentication_",
+			"Form",
+			"form",
+			"handsome",
+			"<form",
+			"csrf",
+			"right",
+			"appointment"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Overdentures",
+			"{% load thumbnail as sorl_thumbnail %}",
+			"css/consultations/table.css",
+			"fi-marker",
+			"fi-calendar",
+			"fi-check",
+			"gi-check",
+			"STATIC_URL }}",
+			"",
+			"        <tr>\n          <td></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/kreativdental-logoc.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/im-logo.jpg\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/accesssmile-logo.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/bhms-logo.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/vitaleurope.png\"></td>\n{% endblock %}\n{% endblock %}",
+			"        <tr>\n          <td></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/kreativdental-logoc.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/im-logo.jpg\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/accesssmile-logo.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/bhms-logo.png\"></td>\n          <td><img src=\"{{ STATIC_URL }}/img/quotes/logo/vitaleurope.png\"></td>\n        </tr>",
+			"Medafly",
+			"medafly",
+			"-"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME",
+								"xxx"
+							],
+							"auto_name": "",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"curly": true,
+								"eqeqeq": true,
+								"forin": true,
+								"globals":
+								{
+									"Class": false,
+									"Meteor": false,
+									"_": false,
+									"jQuery": false
+								},
+								"immed": true,
+								"jquery": true,
+								"latedef": true,
+								"maxdepth": 5.0,
+								"newcap": true,
+								"noarg": true,
+								"nonew": false,
+								"regexdash": true,
+								"strict": true,
+								"sub": true,
+								"trailing": true,
+								"undef": true,
+								"unused": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501",
+								"W391"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": false,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": true,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": true,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.732747036935,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 182.0
+	},
+	"output.jsconsole_view":
+	{
+		"height": 0.0
+	},
+	"output.jshint_view":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sea",
+				"templates/clinics/clinic_search.html"
+			],
+			[
+				"staff",
+				"templates/consultations/quotation_staff_list.html"
+			],
+			[
+				"book",
+				"templates/clinics/appointment_book_form.html"
+			],
+			[
+				"prod",
+				"requirements/production.txt"
+			],
+			[
+				"req",
+				"requirements.txt"
+			],
+			[
+				"base",
+				"templates/base/base.html"
+			],
+			[
+				"boo",
+				"templates/clinics/appointment_book_form.html"
+			],
+			[
+				"login_",
+				"templates/users/_login_form.html"
+			],
+			[
+				"login",
+				"templates/users/login.html"
+			],
+			[
+				"site",
+				"static/scss/consultations/site.scss"
+			],
+			[
+				"cline",
+				"templates/clinics/clinic_search.html"
+			],
+			[
+				"urls",
+				"users/urls.py"
+			],
+			[
+				"settin",
+				"static/scss/base/foundation/_settings.scss"
+			],
+			[
+				"sett",
+				"static/scss/base/foundation/_settings.scss"
+			],
+			[
+				"form",
+				"consultations/forms.py"
+			],
+			[
+				"view",
+				"consultations/views.py"
+			],
+			[
+				"quotat",
+				"templates/consultations/quotation_detail.html"
+			],
+			[
+				"sear",
+				"templates/clinics/clinic_search.html"
+			],
+			[
+				"clin",
+				"templates/clinics/clinic_list.html"
+			],
+			[
+				"settings",
+				"static/scss/base/foundation/_settings.scss"
+			],
+			[
+				"quotation",
+				"templates/consultations/quotation_contact_form.html"
+			],
+			[
+				"basevi",
+				"base/views.py"
+			],
+			[
+				"sms",
+				"templates/users/sms_form.html"
+			],
+			[
+				"hip",
+				"templates/consultations/hipmunk.html"
+			],
+			[
+				"var",
+				"static/scss/base/_variables.scss"
+			],
+			[
+				"team",
+				"templates/consultations/quotation_request_team_email.html"
+			],
+			[
+				"thanks",
+				"templates/consultations/thanks.html"
+			],
+			[
+				"pro",
+				"requirements/production.txt"
+			],
+			[
+				"signup_e",
+				"templates/users/quotation_signup_email.html"
+			],
+			[
+				"quoatio",
+				"templates/users/quotation_signup_email.html"
+			],
+			[
+				"email",
+				"templates/base/email_base-dev.html"
+			],
+			[
+				"",
+				"templates/cms/blog_page.html"
+			],
+			[
+				"nv",
+				"templates/base/_nav_account.html"
+			],
+			[
+				"loca",
+				"medicaltourism/settings/local.py"
+			],
+			[
+				"setti",
+				"static/scss/base/foundation/_settings.scss"
+			],
+			[
+				"buil",
+				".buildpacks"
+			],
+			[
+				"npm",
+				"npm_requirements.txt"
+			],
+			[
+				"man",
+				"manage.py"
+			],
+			[
+				"quest",
+				"templates/ask/question_form.html"
+			],
+			[
+				"prof",
+				"templates/users/profile_overview.html"
+			],
+			[
+				"_na",
+				"templates/base/_nav_account.html"
+			],
+			[
+				"ask/v",
+				"ask/views.py"
+			],
+			[
+				"ques",
+				"templates/ask/question_form.html"
+			],
+			[
+				"app",
+				"templates/clinics/appointment_book_form.html"
+			],
+			[
+				"question",
+				"templates/ask/question_list.html"
+			],
+			[
+				"sites",
+				"static/scss/consultations/site.scss"
+			],
+			[
+				"simple",
+				"templates/base/_simple.html"
+			],
+			[
+				"bas",
+				"templates/base/base.html"
+			],
+			[
+				"cli",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"appo",
+				"templates/clinics/appointment_book_form.html"
+			],
+			[
+				"clincs",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"provi",
+				"templates/clinics/provider_detail.html"
+			],
+			[
+				"offer",
+				"templates/consultations/offer.html"
+			],
+			[
+				"contact",
+				"templates/consultations/quotation_contact_form.html"
+			],
+			[
+				"clinc",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"scs",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"clinics",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"clinic",
+				"templates/clinics/clinic_detail.html"
+			],
+			[
+				"views",
+				"clinics/views.py"
+			],
+			[
+				"tasks",
+				"clinics/tasks.py"
+			],
+			[
+				"mode",
+				"clinics/models.py"
+			],
+			[
+				"models",
+				"clinics/models.py"
+			],
+			[
+				"model",
+				"appointments/models.py"
+			],
+			[
+				"500",
+				"templates/base/500.html"
+			],
+			[
+				"ur",
+				"clinics/urls.py"
+			],
+			[
+				"url",
+				"clinics/urls.py"
+			],
+			[
+				"searc",
+				"templates/clinics/clinic_search.html"
+			],
+			[
+				"search",
+				"static/scss/consultations/_search.scss"
+			],
+			[
+				"consulvi",
+				"consultations/views.py"
+			],
+			[
+				"dmin",
+				"clinics/admin.py"
+			],
+			[
+				"admin",
+				"clinics/admin.py"
+			],
+			[
+				"sit",
+				"static/scss/consultations/site.scss"
+			],
+			[
+				"mail",
+				"templates/base/email_base-dev.html"
+			],
+			[
+				"vari",
+				"static/scss/base/_variables.scss"
+			],
+			[
+				"blo",
+				"templates/blog/blogpost_detail.html"
+			],
+			[
+				"blogmode",
+				"blog/models.py"
+			],
+			[
+				"flatpag",
+				"templates/flatpages/default.html"
+			],
+			[
+				"blog",
+				"templates/blog/blogpost_detail.html"
+			],
+			[
+				"clini",
+				"static/scss/clinics/clinics.scss"
+			],
+			[
+				"simpl",
+				"templates/base/_simple.html"
+			],
+			[
+				"dev",
+				"templates/base/email_base-dev.html"
+			],
+			[
+				"s",
+				"static/scss/consultations/site.scss"
+			],
+			[
+				"flatpage",
+				"templates/flatpages/default.html"
+			],
+			[
+				"button",
+				"static/scss/consultations/_buttons.scss"
+			],
+			[
+				"loc",
+				"medicaltourism/settings/local.py"
+			],
+			[
+				"pr",
+				"requirements/production.txt"
+			],
+			[
+				"template",
+				"templates/template_1.html"
+			],
+			[
+				"hi",
+				"templates/consultations/hipmunk.html"
+			],
+			[
+				"defau",
+				"templates/flatpages/default.html"
+			],
+			[
+				"varia",
+				"static/scss/base/_variables.scss"
+			],
+			[
+				"buttons",
+				"static/scss/consultations/_buttons.scss"
+			],
+			[
+				"deta",
+				"templates/clinics/clinic_detail.html"
+			],
+			[
+				"iew",
+				"base/views.py"
+			],
+			[
+				"task",
+				"reviews/tasks.py"
+			],
+			[
+				"list.js",
+				"static/js/base/vendor/list.min.js"
+			],
+			[
+				"prov",
+				"templates/clinics/provider_detail.html"
+			],
+			[
+				"list",
+				"medicaltourism/templates/clinics/clinic_list.html"
+			],
+			[
+				"appoin",
+				"templates/clinics/appointment_book_form.html"
+			],
+			[
+				"passw",
+				"templates/registration/password_reset_confirm.html"
+			],
+			[
+				"userview",
+				"users/views.py"
+			],
+			[
+				"detai",
+				"templates/consultations/quotation_detail.html"
+			],
+			[
+				"local",
+				"medicaltourism/settings/local.py"
+			],
+			[
+				"quot",
+				"templates/consultations/quotation_detail.html"
+			],
+			[
+				"herok",
+				"requirements/heroku-staging-20140115-postruntimechange.txt"
+			],
+			[
+				"run",
+				"runtime.txt"
+			],
+			[
+				"building",
+				"templates/clinics/building_detail.html"
+			],
+			[
+				"quotatoi",
+				"templates/consultations/quotation_signup_form.html"
+			],
+			[
+				"quotato",
+				"templates/consultations/quotation_detail.html"
+			],
+			[
+				"sign",
+				"templates/consultations/quotation_signup_form.html"
+			],
+			[
+				"place",
+				"static/js/base/vendor/placeholder.js"
+			],
+			[
+				"cookie",
+				"static/js/base/foundation/foundation.cookie.js"
+			],
+			[
+				"jquer",
+				"static/js/base/vendor/jquery.js"
+			],
+			[
+				"jquerycook",
+				"static/js/base/vendor/jquery.cookie.js"
+			],
+			[
+				"clinicsurl",
+				"clinics/urls.py"
+			],
+			[
+				"signup",
+				"templates/consultations/quotation_signup_form.html"
+			],
+			[
+				"contac",
+				"templates/consultations/quotation_contact_form.html"
+			],
+			[
+				"quoationco",
+				"templates/consultations/quotation_contact_form.html"
+			],
+			[
+				"reset",
+				"templates/registration/password_reset_form.html"
+			],
+			[
+				"password_reset_email",
+				"templates/registration/password_reset_email.html"
+			],
+			[
+				"quotatio",
+				"templates/consultations/quotation_local_detail.html"
+			],
+			[
+				"lo",
+				"medicaltourism/settings/local.py"
+			],
+			[
+				"home",
+				"templates/consultations/home.html"
+			],
+			[
+				"quotatoin",
+				"templates/consultations/quotation_signup_form.html"
+			],
+			[
+				"forms",
+				"static/scss/consultations/_form.scss"
+			],
+			[
+				"placeholder",
+				"static/js/base/vendor/placeholder.js"
+			],
+			[
+				"h",
+				"templates/consultations/hipmunk.html"
+			],
+			[
+				"register",
+				"templates/registration/registration_form-delete.html"
+			],
+			[
+				"thank",
+				"templates/consultations/thanks.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 172.0,
+	"status_bar_visible": true
+}
