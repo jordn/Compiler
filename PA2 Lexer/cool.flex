@@ -47,6 +47,9 @@ extern YYSTYPE cool_yylval;
 int comment_depth;
 int string_length = 0;
 
+bool strTooLong();
+void resetStr();
+int strLenErr();
 void addToStr(char* str);
 %}
 
@@ -64,37 +67,30 @@ ALPHANUMERIC    [a-zA-Z0-9_]
 
 %x COMMENT
 %x STRING
-%s BROKENSTRING
+%x BROKENSTRING
 
 %%
 
  /*
   *  Nested comments
   */
-
-
- /*
-  *  The multiple-character operators.
-  */
-{DARROW}		{ return (DARROW); }
-[ \t] 
-
-"(*"            {   comment_depth++;
-                    // printf("comment depth: %d\n", comment_depth);
+<INITIAL,COMMENT>"(*" {
+                    comment_depth++;
                     BEGIN(COMMENT); 
-                }
-<COMMENT>"(*"   {   comment_depth++;
-                    // printf("comment depth: %d\n", comment_depth);
                 }
 <COMMENT>\n     { curr_lineno++; }
 <COMMENT>.      {}
 <COMMENT>"*)"   {   comment_depth--;
-                    // printf("comment shallowness: %d\n", comment_depth);
                     if (comment_depth == 0) {
                         BEGIN(INITIAL);
                     } 
                 }
-<INITIAL,STRING>"*)"   {
+<COMMENT><<EOF>> {   
+                    BEGIN(INITIAL);
+                    cool_yylval.error_msg = "EOF in comment";
+                    return(ERROR);
+                }
+<INITIAL>"*)"   {
                     cool_yylval.error_msg = "Unmatched *)";
                     return(ERROR);
 }
@@ -102,66 +98,15 @@ ALPHANUMERIC    [a-zA-Z0-9_]
 "--".*\n        { curr_lineno++; }  /* discard line */
 "--".*          { curr_lineno++; }  /* discard line */
 
-\"            { 
-                    // "starting tag
-                    BEGIN(STRING);
-                    // printf("str: %s\n", string_buf);
-                    // printf("strlen: %d\n", string_length);
-                }
-<STRING>\"    { 
-                    // Closing tag"
-                    // printf("endstr: %s\n", string_buf);
-                    // printf("strlen: %d\n", string_length);
-                    if (string_length > 1024) {
-                      cool_yylval.error_msg = "String constant too long";
-                      return(ERROR);
-                    }
-                    cool_yylval.symbol = stringtable.add_string(string_buf);
-                    string_buf[0] = '\0';
-                    string_length = 0;
-                    BEGIN(INITIAL);
-                    return(STR_CONST);
-                }
-<STRING>\\       {   
-                    // escape char (ignore)
-                }
-<STRING>\0       {   
-                      BEGIN(BROKENSTRING);
-                }
-<BROKENSTRING>.*[\"] {
-                    // End of the broken string"
-                    BEGIN(INITIAL);
-                    cool_yylval.error_msg = "String contains null character";
-                    return(ERROR);
-                }
-<STRING>\n      {   
-                    // unescaped new line
-                    BEGIN(INITIAL);
-                    cool_yylval.error_msg = "Unescaped new line in string";
-                    return(ERROR);
-                }
-<STRING>\\\n      {   
-                    // escaped backspacsh
-                    // printf("captured: %s\n", yytext);
-                    curr_lineno++; 
-                    addToStr("\n");
-                    string_length++;
-                    // printf("buffer: %s\n", string_buf);
-                }
-<STRING><<EOF>> {   
-                    BEGIN(INITIAL);
-                    cool_yylval.error_msg = "EOF in string constant";
-                    return(ERROR);
-                }
 
 
-<STRING>.       {   
-                    addToStr(yytext);
-                    string_length++;
-                    // printf("str: %s\n", string_buf);
-                }
+ /*
+  *  The multiple-character operators.
+  */
 
-
+{DARROW}        { return (DARROW); }
+"<-"            { return (ASSIGN); }
+"<="            { return (LE); }
 "/"             { return '/'; }
 "+"             { return '+'; }
 "-"             { return '-'; }
@@ -231,13 +176,98 @@ f(?i:alse)  {
   *  \n \t \b \f, the result is c.
   *
   */
+\"            { 
+                    // "starting tag
+                    BEGIN(STRING);
+                }
+<STRING>\"    { 
+                    // Closing tag"
+                    cool_yylval.symbol = stringtable.add_string(string_buf);
+                    resetStr();
+                    BEGIN(INITIAL);
+                    return(STR_CONST);
+                }
+<STRING>(\0|\\\0) {
+                      cool_yylval.error_msg = "String contains null character";
+                      BEGIN(BROKENSTRING);
+                      return(ERROR);
+                }
+<BROKENSTRING>.*[\"\n] {
+                    //"//Get to the end of broken string
+                    BEGIN(INITIAL);
+                }
+<STRING>\\\n      {   
+                    // escaped slash
+                    // printf("captured: %s\n", yytext);
+                    if (strTooLong()) { return strLenErr(); }
+                    curr_lineno++; 
+                    addToStr("\n");
+                    string_length++;
+                    // printf("buffer: %s\n", string_buf);
+                }
+<STRING>\n      {   
+                    // unescaped new line
+                    curr_lineno++; 
+                    BEGIN(INITIAL);
+                    resetStr();
+                    cool_yylval.error_msg = "Unterminated string constant";
+                    return(ERROR);
+                }
 
-"_"         { 
-              cool_yylval.error_msg = yytext;
-              return(ERROR);
-            }
+<STRING><<EOF>> {   
+                    BEGIN(INITIAL);
+                    cool_yylval.error_msg = "EOF in string constant";
+                    return(ERROR);
+                }
+
+<STRING>\\n      {  // escaped slash, then an n
+                    if (strTooLong()) { return strLenErr(); }
+                    curr_lineno++; 
+                    addToStr("\n");
+                }
+
+<STRING>\\t     {
+                    if (strTooLong()) { return strLenErr(); }
+                    string_length++;
+                    addToStr("\t");
+}
+<STRING>\\b     {
+                    if (strTooLong()) { return strLenErr(); }
+                    string_length++;
+                    addToStr("\b");
+}
+<STRING>\\f     {
+                    if (strTooLong()) { return strLenErr(); }
+                    string_length++;
+                    addToStr("\f");
+}
+<STRING>\\.     {
+                    //escaped character, just add the character
+                    if (strTooLong()) { return strLenErr(); }
+                    string_length++;
+                    addToStr(&strdup(yytext)[1]);
+                }
+<STRING>.       {   
+                    if (strTooLong()) { return strLenErr(); }
+                    addToStr(yytext);
+                    string_length++;
+                }
+
+
+ /*
+  *  Catching all the rest including whitespace
+  *
+  */
+
 
 \n          { curr_lineno++; }
+
+[ \r\t\v\f] {}
+
+.           {
+              cool_yylval.error_msg = yytext;
+              return(ERROR);
+}
 
 %%
 
@@ -248,3 +278,21 @@ void addToStr(char* str) {
     strcat(string_buf, str);
 }
 
+bool strTooLong() {
+  if (string_length + 1 >= MAX_STR_CONST) {
+      BEGIN(BROKENSTRING);
+      return true;
+    }
+    return false;
+}
+
+void resetStr() {
+    string_length = 0;
+    string_buf[0] = '\0';
+}
+
+int strLenErr() {
+  resetStr();
+    cool_yylval.error_msg = "String constant too long";
+    return ERROR;
+}

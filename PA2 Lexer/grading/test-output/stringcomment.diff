@@ -1,5 +1,0 @@
-2c2,3
-< STR_CONST "(* not a comment *)"
----
-> LONGERROR
-> STR_CONST "(* not a comment "
