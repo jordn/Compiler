@@ -10,7 +10,6 @@
   #include "utilities.h"
   #include "list.h"
   
-  
   extern char *curr_filename;
   
   
@@ -142,7 +141,10 @@
     %type <formal> formal
     %type <expression> expr
     %type <expressions> one_or_more_expr
+    %type <expressions> param_expr
     %type <expression> let_expr
+    %type <cases> case_branch_list
+    %type <case_> case_branch
     
     /* Precedence declarations go here. */
     /* "The declarations %left and %right ([left and] right associativity) take the place of %token
@@ -188,6 +190,11 @@
                     stringtable.add_string(curr_filename)); }
                 | CLASS TYPEID INHERITS TYPEID '{' features_list '}' ';' {
                     $$ = class_($2, $4, $6, stringtable.add_string(curr_filename)); }
+
+                 /* handling errors in class definitions and body */
+                | CLASS TYPEID '{' error '}' ';' { yyclearin; $$ = NULL; }
+                | CLASS error '{' features_list '}' ';' { yyclearin; $$ = NULL; }
+                | CLASS error '{' error '}' ';' { yyclearin; $$ = NULL; }
                 ;
     
     /* Feature list may be empty, but no empty features in list. */
@@ -217,10 +224,13 @@
     /* Expressions are the potatoes to the program's caserol */
     expr        : OBJECTID ASSIGN expr { $$ = assign($1, $3); }
 
+                /* dispatch: normal, static, with self omitted */
+                | expr '.' OBJECTID '(' param_expr ')' { $$ = dispatch($1, $3, $5); }
+                | expr '@' TYPEID '.' OBJECTID '(' param_expr ')' { $$ = static_dispatch($1, $3, $5, $7); }
+                | OBJECTID '(' param_expr ')' { $$ = dispatch(object(idtable.add_string("self")), $1, $3); }
 
                 /* Control structures */
                 | IF expr THEN expr ELSE expr FI { $$ = cond($2, $4, $6); }
-                // | IF expr THEN expr { $$ = cond($2, $4); }
                 | WHILE expr LOOP expr POOL { $$ = loop($2, $4); }
 
                 /* Block of one or more expressions */
@@ -228,7 +238,12 @@
 
                 /* nested lets */
                 | LET let_expr { $$ = $2; }
-                
+
+                /* Use `case_branch_list` nonterminal to handle one or more cases 
+                 * See Cool Tour for more information on constructors
+                 */
+                | CASE expr OF case_branch_list ESAC { $$ = typcase($2, $4); }
+
                 /* Prefix keywords */
                 | NEW TYPEID { $$ = new_($2); }
                 | ISVOID expr { $$ = isvoid($2); }
@@ -264,10 +279,25 @@
                 | error IN expr { yyclearin; $$ = NULL; }
                 | error ',' let_expr { yyclearin; $$ = NULL; }
                 ;
-
+    
     one_or_more_expr : expr ';' { $$ = single_Expressions($1); }
-                     | one_or_more_expr expr { $$ = append_Expressions($1, single_Expressions($2)); }
+                     | one_or_more_expr expr { $$ = append_Expressions($1, single_Expressions($3)); }
+                     | error ';' { yyclearin; $$ = NULL; }
                      ;    
+
+
+    param_expr  : expr { $$ = single_Expressions($1); }
+                | param_expr ',' expr { $$ = append_Expressions($1, single_Expressions($3)); }
+                |      { $$ = nil_Expressions(); }
+                ;
+
+    case_branch_list  : case_branch { $$ = single_Cases($1); }
+                      | case_branch_list case_branch { $$ = append_Cases($1, single_Cases($2)); }
+                      ;
+
+    case_branch       : OBJECTID ':' TYPEID DARROW expr ';' { $$ = branch($1, $3, $5); }
+                      ;
+
     /* end of grammar */
     %%
     
