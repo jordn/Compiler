@@ -8,6 +8,8 @@
   #include "cool-tree.h"
   #include "stringtab.h"
   #include "utilities.h"
+  #include "list.h"
+  
   
   extern char *curr_filename;
   
@@ -40,7 +42,7 @@
     * (fictional) construct that matches a plus between two integer constants. 
     * (SUCH A RULE SHOULD NOT BE  PART OF YOUR PARSER):
     
-    plus_consts	: INT_CONST '+' INT_CONST 
+    plus_consts : INT_CONST '+' INT_CONST 
     
     * where INT_CONST is a terminal for an integer constant. Now, a correct
     * action for this rule that attaches the correct line number to plus_const
@@ -81,8 +83,8 @@
     /*                DONT CHANGE ANYTHING IN THIS SECTION                  */
     
     Program ast_root;	      /* the result of the parse  */
-    Classes parse_results;        /* for use in semantic analysis */
-    int omerrs = 0;               /* number of errors in lexing and parsing */
+    Classes parse_results;  /* for use in semantic analysis */
+    int omerrs = 0;         /* number of errors in lexing and parsing */
     %}
     
     /* A union of all the types that can be the result of parsing actions. */
@@ -133,42 +135,139 @@
     %type <program> program
     %type <classes> class_list
     %type <class_> class
-    
-    /* You will want to change the following line. */
-    %type <features> dummy_feature_list
+    %type <features> features_list
+    %type <features> features
+    %type <feature> feature
+    %type <formals> formals
+    %type <formal> formal
+    %type <expression> expr
+    %type <expressions> one_or_more_expr
+    %type <expression> let_expr
     
     /* Precedence declarations go here. */
-    
+    /* "The declarations %left and %right ([left and] right associativity) take the place of %token
+     * which is used to declare a token type name without associativity/precedence.
+     * - Bison manual - sec 2.2 */
+    %right ASSIGN
+    %left NOT
+    %nonassoc LE '<' '='
+    %left '+' '-'
+    %left '*' '/'
+    %left ISVOID
+    %left '~'
+    %left '@'
+    %left '.'
+
     
     %%
     /* 
     Save the root of the abstract syntax tree in a global variable.
+    Think about what this grammar means; a program is made up of a list of one or more classes
     */
-    program	: class_list	{ @$ = @1; ast_root = program($1); }
-    ;
-    
-    class_list
-    : class			/* single class */
-    { $$ = single_Classes($1);
-    parse_results = $$; }
-    | class_list class	/* several classes */
-    { $$ = append_Classes($1,single_Classes($2)); 
-    parse_results = $$; }
-    ;
+                /* Save the root of the abstract syntax tree in a global variable @$ 
+                   * See section 6.5 in the Tour of Cool pdf */
+    program     : class_list { @$ = @1; ast_root = program($1);}
+                ;
+
+                /* "In each action, the pseudo-variable $$ stands for the semantic value for the grouping that the rule is going to construct.
+                 * Assigning a value to $$ is the main job of most actions.
+                 * The semantic values of the components of the rule are referred to as $1, $2, and so on."
+                 * - Bison 3.0 manual */
+
+
+                  /* per variable declaration, "used in semantic analysis" */
+    class_list  : class { $$ = single_Classes($1); parse_results = $$; }
+                  /* several classes */
+                | class_list class {$$ = append_Classes($1, single_Classes($2)); parse_results = $$; }
+                ;
     
     /* If no parent is specified, the class inherits from the Object class. */
-    class	: CLASS TYPEID '{' dummy_feature_list '}' ';'
-    { $$ = class_($2,idtable.add_string("Object"),$4,
-    stringtable.add_string(curr_filename)); }
-    | CLASS TYPEID INHERITS TYPEID '{' dummy_feature_list '}' ';'
-    { $$ = class_($2,$4,$6,stringtable.add_string(curr_filename)); }
-    ;
+    /* notice the optional "inherits" expression is handled by options in the grammar */
+    class	      : CLASS TYPEID '{' features_list '}' ';' {
+                    $$ = class_($2, idtable.add_string("Object"), $4,
+                    stringtable.add_string(curr_filename)); }
+                | CLASS TYPEID INHERITS TYPEID '{' features_list '}' ';' {
+                    $$ = class_($2, $4, $6, stringtable.add_string(curr_filename)); }
+                ;
     
     /* Feature list may be empty, but no empty features in list. */
-    dummy_feature_list:		/* empty */
-    {  $$ = nil_Features(); }
-    
-    
+    features_list :  features { $$ = $1; }
+                  |           { $$ = nil_Features(); }
+                  ;
+
+    features    : feature ';' { $$ = single_Features($1); }
+                | features feature ';' { $$ = append_Features($1, single_Features($2)); }
+                | error ';' { yyclearin; $$ = NULL; }
+                ;
+
+    feature     : OBJECTID '(' formals ')' ':' TYPEID '{' expr '}' { $$ = method($1, $3, $6, $8); }
+                | OBJECTID ':' TYPEID { $$ = attr($1, $3, no_expr()); }
+                | OBJECTID ':' TYPEID ASSIGN expr { $$ = attr($1, $3, $5); }
+                ;      
+
+    /* formals are comma-separated arguments, i.e. "formal parameters" */
+    formals     : formal { $$ = single_Formals($1); }
+                | formals ',' formal { $$ = append_Formals($1, single_Formals($3)); }
+                |        { $$ = nil_Formals();}
+                ;
+
+    formal      : OBJECTID ':' TYPEID { $$ = formal($1, $3); }
+                ;
+
+    /* Expressions are the potatoes to the program's caserol */
+    expr        : OBJECTID ASSIGN expr { $$ = assign($1, $3); }
+
+
+                /* Control structures */
+                | IF expr THEN expr ELSE expr FI { $$ = cond($2, $4, $6); }
+                // | IF expr THEN expr { $$ = cond($2, $4); }
+                | WHILE expr LOOP expr POOL { $$ = loop($2, $4); }
+
+                /* Block of one or more expressions */
+                | '{' one_or_more_expr '}' { $$ = block($2); }
+
+                /* nested lets */
+                | LET let_expr { $$ = $2; }
+                
+                /* Prefix keywords */
+                | NEW TYPEID { $$ = new_($2); }
+                | ISVOID expr { $$ = isvoid($2); }
+
+
+                /* Operators */
+                | expr '+' expr { $$ = plus($1, $3); }
+                | expr '-' expr { $$ = sub($1, $3); }
+                | expr '*' expr { $$ = mul($1, $3); }
+                | expr '/' expr { $$ = divide($1, $3); }
+                | '~' expr      { $$ = neg($2); }
+                | expr '<' expr { $$ = lt($1, $3); }
+                | expr LE expr  { $$ = leq($1, $3); }
+                | expr '=' expr { $$ = eq($1, $3); }
+                | NOT expr      { $$ = comp($2); }
+
+                /* Parentheses */
+                | '(' expr ')' { $$ = $2; }
+
+                /* Names */
+                | OBJECTID { $$ = object($1); }
+
+                /* Literals */
+                | INT_CONST { $$ = int_const($1); }
+                | STR_CONST { $$ = string_const($1); }
+                | BOOL_CONST { $$ = bool_const($1); }
+                ;
+
+    let_expr    : OBJECTID ':' TYPEID IN expr { $$ = let($1, $3, no_expr(), $5); }
+                | OBJECTID ':' TYPEID ASSIGN expr IN expr { $$ = let($1, $3, $5, $7); }
+                | OBJECTID ':' TYPEID ',' let_expr { $$ = let($1, $3, no_expr(), $5); }
+                | OBJECTID ':' TYPEID ASSIGN expr ',' let_expr { $$ = let($1, $3, $5, $7); }
+                | error IN expr { yyclearin; $$ = NULL; }
+                | error ',' let_expr { yyclearin; $$ = NULL; }
+                ;
+
+    one_or_more_expr : expr ';' { $$ = single_Expressions($1); }
+                     | one_or_more_expr expr { $$ = append_Expressions($1, single_Expressions($2)); }
+                     ;    
     /* end of grammar */
     %%
     
