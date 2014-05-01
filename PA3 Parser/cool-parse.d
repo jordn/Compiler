@@ -7,4 +7,5 @@ cool-parse.o cool-parse.d : cool-parse.cc /usr/class/cs143/cool/include/PA3/cool
  /usr/class/cs143/cool/include/PA3/tree.h \
  /usr/class/cs143/cool/include/PA3/cool.h \
  /usr/class/cs143/cool/include/PA3/stringtab.h \
- /usr/class/cs143/cool/include/PA3/utilities.h
+ /usr/class/cs143/cool/include/PA3/utilities.h \
+ /usr/class/cs143/cool/include/PA3/list.h

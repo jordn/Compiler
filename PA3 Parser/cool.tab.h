@@ -108,7 +108,7 @@ extern int cool_yydebug;
 typedef union YYSTYPE
 {
 /* Line 2053 of yacc.c  */
-#line 89 "cool.y"
+#line 93 "cool.y"
 
       Boolean boolean;
       Symbol symbol;

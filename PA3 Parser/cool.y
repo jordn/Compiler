@@ -3,6 +3,9 @@
 *              Parser definition for the COOL language.
 *
 */
+
+/* http://www.gnu.org/software/bison/manual/bison.html#Prologue
+ */
 %{
   #include <iostream>
   #include "cool-tree.h"
@@ -47,7 +50,7 @@
     * action for this rule that attaches the correct line number to plus_const
     * would look like the following:
     
-    plus_consts	: INT_CONST '+' INT_CONST 
+    plus_consts : INT_CONST '+' INT_CONST 
     {
       // Set the line number of the current non-terminal:
       // ***********************************************
@@ -77,13 +80,13 @@
     
     void yyerror(char *s);        /*  defined below; called for each parse error */
     extern int yylex();           /*  the entry point to the lexer  */
-    
+
     /************************************************************************/
     /*                DONT CHANGE ANYTHING IN THIS SECTION                  */
     
-    Program ast_root;	      /* the result of the parse  */
-    Classes parse_results;  /* for use in semantic analysis */
-    int omerrs = 0;         /* number of errors in lexing and parsing */
+    Program ast_root;       /* the result of the parse  */
+    Classes parse_results;        /* for use in semantic analysis */
+    int omerrs = 0;               /* number of errors in lexing and parsing */
     %}
     
     /* A union of all the types that can be the result of parsing actions. */
@@ -139,14 +142,14 @@
     %type <feature> feature
     %type <formals> formals
     %type <formal> formal
-    %type <expression> expr
+    %type <cases> case_branch_list 
+    %type <case_> case_branch
     %type <expressions> one_or_more_expr
     %type <expressions> param_expr
+    %type <expression> expr
     %type <expression> let_expr
-    %type <cases> case_branch_list
-    %type <case_> case_branch
-    
-    /* Precedence declarations go here. */
+
+    /* Precedence declarations go here.
     /* "The declarations %left and %right ([left and] right associativity) take the place of %token
      * which is used to declare a token type name without associativity/precedence.
      * - Bison manual - sec 2.2 */
@@ -160,80 +163,79 @@
     %left '@'
     %left '.'
 
-    
     %%
-    /* 
-    Save the root of the abstract syntax tree in a global variable.
-    Think about what this grammar means; a program is made up of a list of one or more classes
-    */
-                /* Save the root of the abstract syntax tree in a global variable @$ 
-                   * See section 6.5 in the Tour of Cool pdf */
-    program     : class_list { @$ = @1; ast_root = program($1);}
-                ;
-
-                /* "In each action, the pseudo-variable $$ stands for the semantic value for the grouping that the rule is going to construct.
-                 * Assigning a value to $$ is the main job of most actions.
-                 * The semantic values of the components of the rule are referred to as $1, $2, and so on."
-                 * - Bison 3.0 manual */
-
-
-                  /* per variable declaration, "used in semantic analysis" */
-    class_list  : class { $$ = single_Classes($1); parse_results = $$; }
-                  /* several classes */
-                | class_list class {$$ = append_Classes($1, single_Classes($2)); parse_results = $$; }
+    /* Think about what this grammar means; a program is made up of a list of one or more classes */
+    program     : class_list { 
+                    /* Save the root of the abstract syntax tree in a global variable @$ 
+                     * See section 6.5 in the Tour of Cool pdf */
+                    @$ = @1; ast_root = program($1); }
                 ;
     
-    /* If no parent is specified, the class inherits from the Object class. */
+    class_list  : class {
+                    /* "In each action, the pseudo-variable $$ stands for the semantic value for the grouping that the rule is going to construct.
+                     * Assigning a value to $$ is the main job of most actions.
+                     * The semantic values of the components of the rule are referred to as $1, $2, and so on."
+                     * - Bison 3.0 manual */
+                    $$ = single_Classes($1);
+                    /* per variable declaration, "used in semantic analysis" */
+                    parse_results = $$; }
+                | class_list class {
+                    $$ = append_Classes($1,single_Classes($2));
+                    parse_results = $$; }
+                ;
+    
+    /* if no parent is specified, the class inherits from the Object class. */
     /* notice the optional "inherits" expression is handled by options in the grammar */
-    class	      : CLASS TYPEID '{' features_list '}' ';' {
-                    $$ = class_($2, idtable.add_string("Object"), $4,
-                    stringtable.add_string(curr_filename)); }
+    class     : CLASS TYPEID '{' features_list '}' ';' {
+                    /* The class_ constructor builds a Class_ tree node with four arguments as children  */
+                    $$ = class_($2, idtable.add_string("Object"), $4, stringtable.add_string(curr_filename)); }
                 | CLASS TYPEID INHERITS TYPEID '{' features_list '}' ';' {
                     $$ = class_($2, $4, $6, stringtable.add_string(curr_filename)); }
 
-                 /* handling errors in class definitions and body */
+                /* handling errors in class definitions and body */
                 | CLASS TYPEID '{' error '}' ';' { yyclearin; $$ = NULL; }
                 | CLASS error '{' features_list '}' ';' { yyclearin; $$ = NULL; }
                 | CLASS error '{' error '}' ';' { yyclearin; $$ = NULL; }
                 ;
     
-    /* Feature list may be empty, but no empty features in list. */
-    features_list :  features { $$ = $1; }
-                  |           { $$ = nil_Features(); }
-                  ;
-
+    /* features_list may be empty, but no empty features in list. 
+     * practically, this means the nonterminal features_list can be empty,
+     * but we cannot allow the features nonterminal to call nil_Features() */
+    features_list   : features { $$ = $1; }
+                    | { $$ = nil_Features(); }
+                    ;
     features    : feature ';' { $$ = single_Features($1); }
                 | features feature ';' { $$ = append_Features($1, single_Features($2)); }
                 | error ';' { yyclearin; $$ = NULL; }
                 ;
-
     feature     : OBJECTID '(' formals ')' ':' TYPEID '{' expr '}' { $$ = method($1, $3, $6, $8); }
+                /* attribute w/ and w/o assignment */
                 | OBJECTID ':' TYPEID { $$ = attr($1, $3, no_expr()); }
                 | OBJECTID ':' TYPEID ASSIGN expr { $$ = attr($1, $3, $5); }
-                ;      
+                ;
 
     /* formals are comma-separated arguments, i.e. "formal parameters" */
     formals     : formal { $$ = single_Formals($1); }
                 | formals ',' formal { $$ = append_Formals($1, single_Formals($3)); }
-                |        { $$ = nil_Formals();}
+                /* empty argument list allowed */
+                | { $$ = nil_Formals(); }
                 ;
-
     formal      : OBJECTID ':' TYPEID { $$ = formal($1, $3); }
                 ;
-
-    /* Expressions are the potatoes to the program's caserol */
+   
+    /* expressions are the body of the program */
     expr        : OBJECTID ASSIGN expr { $$ = assign($1, $3); }
 
-                /* dispatch: normal, static, with self omitted */
+                /* dispatch: normal, static, omitted self */
                 | expr '.' OBJECTID '(' param_expr ')' { $$ = dispatch($1, $3, $5); }
                 | expr '@' TYPEID '.' OBJECTID '(' param_expr ')' { $$ = static_dispatch($1, $3, $5, $7); }
                 | OBJECTID '(' param_expr ')' { $$ = dispatch(object(idtable.add_string("self")), $1, $3); }
 
-                /* Control structures */
+                /* control structures */
                 | IF expr THEN expr ELSE expr FI { $$ = cond($2, $4, $6); }
                 | WHILE expr LOOP expr POOL { $$ = loop($2, $4); }
 
-                /* Block of one or more expressions */
+                /* block of expression(s) */
                 | '{' one_or_more_expr '}' { $$ = block($2); }
 
                 /* nested lets */
@@ -244,29 +246,28 @@
                  */
                 | CASE expr OF case_branch_list ESAC { $$ = typcase($2, $4); }
 
-                /* Prefix keywords */
+                /* prefix keywords */
                 | NEW TYPEID { $$ = new_($2); }
                 | ISVOID expr { $$ = isvoid($2); }
 
-
-                /* Operators */
+                /* operators  */
                 | expr '+' expr { $$ = plus($1, $3); }
                 | expr '-' expr { $$ = sub($1, $3); }
                 | expr '*' expr { $$ = mul($1, $3); }
                 | expr '/' expr { $$ = divide($1, $3); }
-                | '~' expr      { $$ = neg($2); }
+                | '~' expr { $$ = neg($2); }
                 | expr '<' expr { $$ = lt($1, $3); }
-                | expr LE expr  { $$ = leq($1, $3); }
+                | expr LE expr { $$ = leq($1, $3); }
                 | expr '=' expr { $$ = eq($1, $3); }
-                | NOT expr      { $$ = comp($2); }
-
-                /* Parentheses */
+                | NOT expr { $$ = comp($2); }
+                
+                /* parentheses */
                 | '(' expr ')' { $$ = $2; }
 
-                /* Names */
+                /* names */
                 | OBJECTID { $$ = object($1); }
 
-                /* Literals */
+                /* literals - strings, numbers, booleans */
                 | INT_CONST { $$ = int_const($1); }
                 | STR_CONST { $$ = string_const($1); }
                 | BOOL_CONST { $$ = bool_const($1); }
@@ -280,23 +281,28 @@
                 | error ',' let_expr { yyclearin; $$ = NULL; }
                 ;
     
-    one_or_more_expr : expr ';' { $$ = single_Expressions($1); }
-                     | one_or_more_expr expr { $$ = append_Expressions($1, single_Expressions($3)); }
-                     | error ';' { yyclearin; $$ = NULL; }
-                     ;    
+    /* one or more expressions, separated by a semicolon
+     * this is not the same as comma-separated expressions (e.g. a list of arguments)
+     */
+    one_or_more_expr    : expr ';' { $$ = single_Expressions($1); }
+                        | one_or_more_expr expr ';' { $$ = append_Expressions($1, single_Expressions($2)); }
+                        /* recover from an expression inside a block */
+                        | error ';' { yyclearin; $$ = NULL; }
+                        ;
 
+    param_expr          : expr { $$ = single_Expressions($1); }
+                        | param_expr ',' expr { $$ = append_Expressions($1, single_Expressions($3)); }
+                        /* include nil because params are optional */
+                        | { $$ = nil_Expressions(); }
+                        ;
 
-    param_expr  : expr { $$ = single_Expressions($1); }
-                | param_expr ',' expr { $$ = append_Expressions($1, single_Expressions($3)); }
-                |      { $$ = nil_Expressions(); }
-                ;
-
-    case_branch_list  : case_branch { $$ = single_Cases($1); }
-                      | case_branch_list case_branch { $$ = append_Cases($1, single_Cases($2)); }
-                      ;
-
-    case_branch       : OBJECTID ':' TYPEID DARROW expr ';' { $$ = branch($1, $3, $5); }
-                      ;
+    /* must have at least one case_branch */
+    case_branch_list    : case_branch { $$ = single_Cases($1); }
+                        /* "The function `append_Phylums` appends two lists of phylums */
+                        | case_branch_list case_branch { $$ = append_Cases($1, single_Cases($2)); }
+                        ;
+    case_branch         : OBJECTID ':' TYPEID DARROW expr ';' { $$ = branch($1, $3, $5); }
+                        ;
 
     /* end of grammar */
     %%
